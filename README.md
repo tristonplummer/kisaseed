@@ -45,8 +45,8 @@ dual licensed as above, without any additional terms or conditions.
 [license-image]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg
 [rustc-image]: https://img.shields.io/badge/rustc-1.56+-blue.svg
 [hazmat-image]: https://img.shields.io/badge/crypto-hazmat%E2%9A%A0-red.svg
-[build]: https://github.com/cupsocino/kisaseed/actions
-[build-badge]: https://github.com/cupsocino/kisaseed/actions/workflows/build.yml/badge.svg
+[build]: https://github.com/tristonplummer/kisaseed/actions
+[build-badge]: https://github.com/tristonplummer/kisaseed/actions/workflows/build.yml/badge.svg
 [crate-image]: https://img.shields.io/crates/v/kisaseed.svg
 [crate-link]: https://crates.io/crates/kisaseed
 
