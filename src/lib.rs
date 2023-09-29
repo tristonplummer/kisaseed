@@ -28,6 +28,12 @@ pub struct SEED {
     key: Key,
 }
 
+impl SEED {
+    pub fn with_key(key: Key) -> Self {
+        Self { key }
+    }
+}
+
 fn derive_key(key: UserKey) -> Key {
     let (mut k0, mut k1, mut k2, mut k3) = divide_block(&key);
     let mut derived = Key::default();
