@@ -1,0 +1,24 @@
+[package]
+name = "kisaseed"
+version = "0.1.1"
+rust-version = "1.56"
+edition = "2021"
+authors = ["Triston Plummer <me@triston.io>"]
+license = "MIT OR Apache-2.0"
+keywords = ["crypto", "kisa", "seed"]
+categories = ["cryptography", "no-std"]
+repository = "https://github.com/cupsocino/kisaseed"
+description = "Pure Rust implementation of KISA's seed block cipher."
+include = [
+    "**/*.rs",
+    "Cargo.toml"
+]
+
+[features]
+zeroize = ["cipher/zeroize"]
+
+[dependencies]
+cipher = "0.4.4"
+
+[dev-dependencies]
+cipher = { version = "0.4.4", features = ["dev"] }
