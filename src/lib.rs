@@ -1,7 +1,4 @@
 #![no_std]
-extern crate alloc;
-
-use alloc::vec::Vec;
 use cipher::consts::{U16, U32};
 use cipher::generic_array::GenericArray;
 use cipher::{AlgorithmName, BlockCipher, InvalidLength, KeyInit, KeySizeUser};
@@ -111,11 +108,13 @@ fn transform(
         }
     }
 
-    let o = [r0, r1, l0, l1]
-        .iter()
-        .flat_map(|n| n.to_be_bytes())
-        .collect::<Vec<u8>>();
-    output[..].copy_from_slice(&o);
+    unsafe {
+        let out = output[..].as_mut_ptr();
+        *(out as *mut u32) = r0.to_be();
+        *(out.offset(4) as *mut u32) = r1.to_be();
+        *(out.offset(8) as *mut u32) = l0.to_be();
+        *(out.offset(12) as *mut u32) = l1.to_be();
+    }
 }
 
 fn encrypt(block: Block, key: Key, output: &mut Block) {
@@ -145,11 +144,8 @@ fn decrypt(block: Block, key: Key, output: &mut Block) {
 }
 
 fn seed_round(l0: &mut u32, l1: &mut u32, r0: u32, r1: u32, key: &Key, offset: usize) {
-    let k0 = key[offset];
-    let k1 = key[offset + 1];
-
-    let mut t0 = r0 ^ k0;
-    let mut t1 = r1 ^ k1;
+    let mut t0 = r0 ^ key[offset];
+    let mut t1 = r1 ^ key[offset + 1];
     t1 ^= t0;
 
     t1 = get_seed_substitute(t1);
