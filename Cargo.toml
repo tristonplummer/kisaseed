@@ -7,7 +7,7 @@ authors = ["Triston Plummer <me@triston.io>"]
 license = "MIT OR Apache-2.0"
 keywords = ["crypto", "kisa", "seed"]
 categories = ["cryptography", "no-std"]
-repository = "https://github.com/cupsocino/kisaseed"
+repository = "https://github.com/tristonplummer/kisaseed"
 description = "Pure Rust implementation of KISA's seed block cipher."
 include = [
     "**/*.rs",
